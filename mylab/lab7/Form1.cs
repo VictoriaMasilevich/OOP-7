@@ -11,6 +11,13 @@ namespace my_primitive_paint
     {
         public Bitmap bmap;
         public Graphics graphics;
+        public List<Fabric> allFabrics = new List<Fabric>()
+        {
+            new RectangleFabric(),
+            new CircleFabric(),
+            new SquareFabric(),
+            new EllipseFabric()
+        };
 
         public mainForm()
         {
@@ -35,15 +42,6 @@ namespace my_primitive_paint
             picture.Image = bmap;
             currentFabrics.Clear();
         }
-
-        public List<Fabric> allFabrics = new List<Fabric>()
-        {
-            new RectangleFabric(),
-            new CircleFabric(),
-            new SquareFabric(),
-            new EllipseFabric()
-        };
-
 
         private void cb_figures_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -74,10 +72,8 @@ namespace my_primitive_paint
         {
                 if (cmb_custom_figures.SelectedIndex >= 0)
                 {
-                    
                     int index = cmb_custom_figures.SelectedIndex;
                     CustomFigure.DrawCustomFigure(index, graphics, e.Location);
-                    
                     picture.Invalidate();
                     picture.Image = bmap;
                 }
@@ -89,7 +85,6 @@ namespace my_primitive_paint
                         start = new Point(e.X, e.Y);
                         figure = maker.FactoryMethod(fatness, color, start, start);
                         currentFabrics.Add(maker);
-
                     }
                 }         
         }
@@ -105,7 +100,6 @@ namespace my_primitive_paint
                 figure.MouseDraw(g, finish);
                 g.Dispose();
                 picture.Invalidate();
-                GC.Collect();
             }
         }
 
@@ -141,7 +135,7 @@ namespace my_primitive_paint
             }
             else
             {
-                MessageBox.Show("Выберит фигуру", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Выберите фигуру", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

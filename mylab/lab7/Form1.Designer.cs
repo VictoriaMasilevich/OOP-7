@@ -67,8 +67,9 @@
             // 
             // cb_figures
             // 
-            this.cb_figures.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.cb_figures.BackColor = System.Drawing.SystemColors.ControlText;
             this.cb_figures.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_figures.ForeColor = System.Drawing.SystemColors.Window;
             this.cb_figures.FormattingEnabled = true;
             this.cb_figures.Items.AddRange(new object[] {
             "Rectangle",
@@ -78,7 +79,7 @@
             this.cb_figures.Location = new System.Drawing.Point(734, 27);
             this.cb_figures.Margin = new System.Windows.Forms.Padding(2);
             this.cb_figures.Name = "cb_figures";
-            this.cb_figures.Size = new System.Drawing.Size(184, 21);
+            this.cb_figures.Size = new System.Drawing.Size(124, 21);
             this.cb_figures.TabIndex = 19;
             this.cb_figures.SelectionChangeCommitted += new System.EventHandler(this.cb_figures_SelectionChangeCommitted);
             // 
@@ -114,12 +115,14 @@
             // 
             // cmb_custom_figures
             // 
+            this.cmb_custom_figures.BackColor = System.Drawing.SystemColors.InfoText;
             this.cmb_custom_figures.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_custom_figures.ForeColor = System.Drawing.SystemColors.Window;
             this.cmb_custom_figures.FormattingEnabled = true;
             this.cmb_custom_figures.Location = new System.Drawing.Point(734, 93);
             this.cmb_custom_figures.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_custom_figures.Name = "cmb_custom_figures";
-            this.cmb_custom_figures.Size = new System.Drawing.Size(184, 21);
+            this.cmb_custom_figures.Size = new System.Drawing.Size(124, 21);
             this.cmb_custom_figures.TabIndex = 24;
             this.cmb_custom_figures.SelectedIndexChanged += new System.EventHandler(this.cmb_custom_figures_SelectedIndexChanged);
             // 
@@ -128,7 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(954, 478);
+            this.ClientSize = new System.Drawing.Size(956, 485);
             this.Controls.Add(this.cmb_custom_figures);
             this.Controls.Add(this.btn_delete_custom_figure);
             this.Controls.Add(this.btn_add_custom_figure);
@@ -139,6 +142,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(972, 523);
+            this.MinimumSize = new System.Drawing.Size(972, 523);
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "lab7";

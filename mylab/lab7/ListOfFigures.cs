@@ -11,13 +11,5 @@ namespace my_primitive_paint
         {
             this.figures = figures;
         }
-
-        public void Draw(Graphics graphics)
-        {
-            foreach( MainFigure figure in figures)
-            {
-                figure.Draw(graphics);
-            }
-        }
     }
 }

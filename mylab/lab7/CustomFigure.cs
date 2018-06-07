@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace my_primitive_paint
@@ -19,7 +16,7 @@ namespace my_primitive_paint
         {
             List<MainFigure> temp = new List<MainFigure>(figures);
             List<Fabric> tempCurrFab = new List<Fabric>(currFabics);
-            combobox.Items.Add("CustomFigures" + savedFigures.Count.ToString());
+            combobox.Items.Add("Figure" + savedFigures.Count.ToString());
             savedFigures.Add(temp);
             fabrics.Add(tempCurrFab);
         }
@@ -36,8 +33,8 @@ namespace my_primitive_paint
                 else
                 {
                     if(((biggestFigrue.bottomRight.X - biggestFigrue.topLeft.X) 
-                        + (biggestFigrue.bottomRight.Y - biggestFigrue.topLeft.Y)) * 2 < ((figure.bottomRight.X - figure.topLeft.X)
-                        + (figure.bottomRight.Y - figure.topLeft.Y)) * 2)
+                        + (biggestFigrue.bottomRight.Y - biggestFigrue.topLeft.Y))  < ((figure.bottomRight.X - figure.topLeft.X)
+                        + (figure.bottomRight.Y - figure.topLeft.Y)))
                     {
                         biggestFigrue = figure;
                     }
@@ -98,7 +95,7 @@ namespace my_primitive_paint
                 new Point(newBottomRightX, newBottomRightY));
         }
 
-        public static void DrawCustomFigure(int index, Graphics g, Point possition)
+        public static void DrawCustomFigure(int index, Graphics g, Point position)
         {
          
             MainFigure biggestFigure = GetBiggestFigure(savedFigures[index]);
@@ -113,12 +110,9 @@ namespace my_primitive_paint
                 Point centerFigure = GetCenterOfFigure(figure);
                 offsetX = GetOffsetX(oldCenter, centerFigure);
                 offsetY = GetOffsetY(oldCenter, centerFigure);
-
-                Point newCenter = GetNewCenter(possition, offsetX, offsetY);
-
+                Point newCenter = GetNewCenter(position, offsetX, offsetY);
                 tempFigure = GetFigure(newCenter, figure);
-                tempFigure.Draw(g);
-                
+                tempFigure.Draw(g); 
             }
         }
 
@@ -129,8 +123,7 @@ namespace my_primitive_paint
             cmb.Items.Clear();
             for(int i = 0; i < savedFigures.Count; i++)
             {
-                cmb.Items.Add("CustomFigures" + i.ToString());
-
+                cmb.Items.Add("Figure" + i.ToString());
             }
         }
 
@@ -170,13 +163,12 @@ namespace my_primitive_paint
                                 stream.Write('\n');
                         }
                     }
-                };
-            }catch(Exception e)
+                }
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            
-            
+            }  
         }
 
         public static void OpenCustomFigures(ComboBox combobox, List<Fabric> exsistingFabric) 
@@ -216,13 +208,12 @@ namespace my_primitive_paint
                             fabrics.Clear();
                             figures.Clear();
                             j = count + j;
-
                         }
                     }    
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Ошибка загрузки пользовательских фигур", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

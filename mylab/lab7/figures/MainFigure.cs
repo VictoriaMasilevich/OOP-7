@@ -5,16 +5,11 @@ namespace my_primitive_paint
 
     public abstract class MainFigure 
     {
-
         public Color color;
-   
         public float fatness;
         public Pen pen;
-
-        public Point topLeft;
-  
+        public Point topLeft;  
         public Point bottomRight;
-
         public Point[] points;
 
 
@@ -35,9 +30,7 @@ namespace my_primitive_paint
             pen = new Pen(color, fatness);
         }
 
-
         public virtual void Draw(Graphics graphics) { }
-
         public virtual void MouseDraw(Graphics g, Point finish) { }
     }
 }
